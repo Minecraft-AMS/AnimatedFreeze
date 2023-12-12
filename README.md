@@ -7,4 +7,4 @@
 ## Intro
 - This mod has added a built-in resource pack to disable the animation effects of s1ea lanterns, kelp, and seagrass.
 
-- May be incompatible with some resource packages, specifically manifested as the animation still exists
+- May be incompatible with some resource packages, specifically manifested as the animation still exists.
