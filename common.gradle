@@ -1,4 +1,5 @@
 apply plugin: 'maven-publish'
+apply plugin: 'com.github.hierynomus.license'
 apply plugin: 'fabric-loom'
 apply plugin: 'com.replaymod.preprocess'
 
@@ -6,18 +7,17 @@ int mcVersion = 1
 
 preprocess {
 	mcVersion = vars.get()["MC"] as int
-	tabIndentation = true
 }
 
 repositories {
 	maven {
-		url 'https://masa.dy.fi/maven'
+		url = 'https://api.modrinth.com/maven'
 	}
 	maven {
-		url 'https://jitpack.io'
+		url = 'https://www.cursemaven.com'
 	}
 	maven {
-		url 'https://www.cursemaven.com'
+		url = 'https://jitpack.io'
 	}
 }
 
@@ -27,37 +27,52 @@ configurations {
 }
 
 dependencies {
+	// loom
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
 loom {
-	runConfigs.all {
+	runConfigs.configureEach {
 		// to make sure it generates all "Minecraft Client (:subproject_name)" applications
 		ideConfigGenerated = true
 		runDir '../../run'
 		vmArgs '-Dmixin.debug.export=true'
 	}
+
+	runs {
+        mixinAudit {
+            server()
+            vmArgs '-Dcarpetamsaddition.mixin_audit=true'
+            ideConfigGenerated false
+        }
+        mixinAuditClient {
+            client()
+            vmArgs '-Dcarpetamsaddition.mixin_audit=true'
+            ideConfigGenerated false
+        }
+    }
 }
 
 remapJar {
 	remapperIsolation = true
 }
 
-if (mcVersion >= 11800) {
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+JavaVersion JAVA_VERSION
+if (mcVersion >= 12005) {
+	JAVA_VERSION = JavaVersion.VERSION_21
+} else if (mcVersion >= 11800) {
+	JAVA_VERSION = JavaVersion.VERSION_17
+} else if (mcVersion >= 11700) {
+	JAVA_VERSION = JavaVersion.VERSION_16
+} else {
+	JAVA_VERSION = JavaVersion.VERSION_1_8
 }
-else if (mcVersion >= 11700) {
-	sourceCompatibility = JavaVersion.VERSION_16
-	targetCompatibility = JavaVersion.VERSION_16
-}
-else {
-	sourceCompatibility = JavaVersion.VERSION_1_8
-	targetCompatibility = JavaVersion.VERSION_1_8
-}
+JavaVersion MIXIN_COMPATIBILITY_LEVEL = JAVA_VERSION
 
 String versionSuffix = ''
 // detect github action environment variables
@@ -75,22 +90,24 @@ archivesBaseName = project.archives_base_name + '-mc' + project.minecraft_versio
 processResources {
 	inputs.property "version", fullModVersion
 
+	from "resources/resourcepacks/animatedfreeze/pack.mcmeta"
+
 	filesMatching("fabric.mod.json") {
 		def valueMap = [
-				"id": project.mod_id,
-				"name": project.mod_name,
-				"version": fullModVersion,
-				"minecraft_dependency": project.minecraft_dependency,
+			"id": project.mod_id,
+			"name": project.mod_name,
+			"version": fullModVersion,
+			"minecraft_dependency": project.minecraft_dependency,
+			"fabric_api_dependency": project.fabric_api_dependency,
 		]
 		expand valueMap
 	}
-}
 
-// ensure that the encoding is set to UTF-8, no matter what the system default is
-// this fixes some edge cases with special characters not displaying correctly
-// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
-tasks.withType(JavaCompile) {
-	options.encoding = "UTF-8"
+	filesMatching("animatedfreeze.mixins.json") {
+		filter {
+			text -> text.replace("/*JAVA_VERSION*/", "JAVA_${MIXIN_COMPATIBILITY_LEVEL.ordinal() + 1}")
+		}
+	}
 }
 
 java {
@@ -105,6 +122,41 @@ jar {
 		rename { "${it}_${project.archivesBaseName}"}
 	}
 }
+
+// https://github.com/hierynomus/license-gradle-plugin
+license {
+	// use "gradle licenseFormat" to apply license headers
+	header = rootProject.file('HEADER.txt')
+	include '**/*.java'
+	skipExistingHeaders = true
+
+	headerDefinitions {
+		// ref: https://github.com/mathieucarbou/license-maven-plugin/blob/4c42374bb737378f5022a3a36849d5e23ac326ea/license-maven-plugin/src/main/java/com/mycila/maven/plugin/license/header/HeaderType.java#L48
+		// modification: add a newline at the end
+		SLASHSTAR_STYLE_NEWLINE {
+			firstLine = "/*"
+			beforeEachLine = " * "
+			endLine = " */" + System.lineSeparator()
+			afterEachLine = ""
+			skipLinePattern = null
+			firstLineDetectionPattern = "(\\s|\\t)*/\\*.*\$"
+			lastLineDetectionPattern = ".*\\*/(\\s|\\t)*\$"
+			allowBlankLines = false
+			isMultiline = true
+			padLines = false
+		}
+	}
+	mapping {
+		java = 'SLASHSTAR_STYLE_NEWLINE'
+	}
+	ext {
+		name = project.mod_name
+		author = '1024_byteeeee'
+		year = Calendar.getInstance().get(Calendar.YEAR).toString()
+	}
+}
+classes.dependsOn licenseFormatMain
+testClasses.dependsOn licenseFormatTest
 
 // configure the maven publication
 publishing {
