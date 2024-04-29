@@ -20,9 +20,14 @@
 
 package top.byteeeee.AnimatedFreeze;
 
-import net.fabricmc.api.ModInitializer;
+import top.byteeeee.AnimatedFreeze.helpers.NeedReloadResources;
 
-public class AnimatedFreeze implements ModInitializer {
-	@Override
-	public void onInitialize() {}
+public class AnimatedFreezeSetting {
+    public static boolean chestOptimization;
+
+    public static void changeValue() {
+        AnimatedFreezeClient.resourcePackManager.getEnabledProfiles().forEach(
+            chestProfile -> AnimatedFreezeSetting.chestOptimization = NeedReloadResources.isOf(chestProfile.getName())
+        );
+    }
 }

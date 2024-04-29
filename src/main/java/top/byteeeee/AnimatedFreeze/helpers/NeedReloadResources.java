@@ -18,11 +18,30 @@
  * along with AnimatedFreeze. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package top.byteeeee.AnimatedFreeze;
+package top.byteeeee.AnimatedFreeze.helpers;
 
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
-public class AnimatedFreeze implements ModInitializer {
-	@Override
-	public void onInitialize() {}
+import top.byteeeee.AnimatedFreeze.utils.RegexTools;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Environment(EnvType.CLIENT)
+public class NeedReloadResources {
+    private static final List<String> needReload = new ArrayList<>();
+
+    public static boolean isOf(String profileName) {
+        return needReload.contains(profileName);
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static String setCompatName(String sourceName) {
+        return RegexTools.createCompatProfileName(sourceName);
+    }
+
+    static {
+        needReload.add(setCompatName("af_mod:chest_optimization"));
+    }
 }

@@ -3,10 +3,13 @@
   "minVersion": "0.8.5",
   "package": "top.byteeeee.AnimatedFreeze.mixin",
   "compatibilityLevel": "/*JAVA_VERSION*/",
-  "mixins": [
-    "TestMixin"
+  "mixins": [],
+  "client": [
+    "chestOptimization.BlockEntityRenderDispatcherMixin",
+    "chestOptimization.ChestBlockMixin",
+    "chestOptimization.EnderChestBlockMixin",
+    "changeSettingsValue.MinecraftClientMixin"
   ],
-  "client": [],
   "server": [],
   "injectors": {
     "defaultRequire": 1

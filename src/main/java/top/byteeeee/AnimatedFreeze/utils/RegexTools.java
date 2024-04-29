@@ -18,11 +18,19 @@
  * along with AnimatedFreeze. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package top.byteeeee.AnimatedFreeze;
+package top.byteeeee.AnimatedFreeze.utils;
 
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
-public class AnimatedFreeze implements ModInitializer {
-	@Override
-	public void onInitialize() {}
+@Environment(EnvType.CLIENT)
+public class RegexTools {
+    public static String createCompatProfileName(String sourceName) {
+        //#if MC<11900
+        String regex = "af_mod:([^/]+)";
+        return sourceName.replaceAll(regex, "af_mod/$1");
+        //#else
+        //$$ return sourceName;
+        //#endif
+    }
 }

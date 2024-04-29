@@ -17,12 +17,16 @@
   "entrypoints": {
     "main": [
       "top.byteeeee.AnimatedFreeze.AnimatedFreeze"
+    ],
+    "client": [
+      "top.byteeeee.AnimatedFreeze.AnimatedFreezeClient"
     ]
   },
   "mixins": [
     "animatedfreeze.mixins.json"
   ],
   "depends": {
-    "minecraft": "${minecraft_dependency}"
+    "minecraft": "${minecraft_dependency}",
+    "fabric": "${fabric_api_dependency}"
   }
 }
