@@ -35,9 +35,9 @@ public class BuiltinResourcesPackAdder {
     }
 
     private static void register(ModContainer modContainer) {
-        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:chest_optimization"), modContainer, ResourcePackActivationType.DEFAULT_ENABLED);
-        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:sea_lantern_freeze"), modContainer, ResourcePackActivationType.DEFAULT_ENABLED);
-        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:seagrass_freeze"), modContainer, ResourcePackActivationType.DEFAULT_ENABLED);
-        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:kelp_freeze"), modContainer, ResourcePackActivationType.DEFAULT_ENABLED);
+        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:chest_optimization"), modContainer, ResourcePackActivationType.NORMAL);
+        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:sea_lantern_freeze"), modContainer, ResourcePackActivationType.NORMAL);
+        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:seagrass_freeze"), modContainer, ResourcePackActivationType.NORMAL);
+        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:kelp_freeze"), modContainer, ResourcePackActivationType.NORMAL);
     }
 }
