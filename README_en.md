@@ -4,7 +4,7 @@
 
 ## Into
 
-- This module adds some built-in resource packs designed to disable certain texture animations or change their rendering approach to improve game performance.
+- This mod adds some built-in resource packs designed to disable certain texture animations or change their rendering approach to improve game performance.
 
 
 
@@ -37,3 +37,7 @@
 - **af_mod/seagrass_freeze**
 
   Removes the swaying animation of seagrass.
+
+&emsp;
+
+**Translate into English from Chat-GPT**
