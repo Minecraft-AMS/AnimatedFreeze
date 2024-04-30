@@ -29,6 +29,10 @@
 - **/animatedFreeze list**
 
   查看已禁用动画的材质列表。
+  
+- **/animatedFreeze help**
+
+  查看指令帮助。
 
 ## 材质包
 

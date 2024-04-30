@@ -28,6 +28,10 @@
 - **/animatedFreeze list**
 
   View the list of materials with animation disabled.
+  
+- **/animatedFreeze help**
+
+  View command help.
 
 
 
