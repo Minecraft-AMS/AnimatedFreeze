@@ -3,7 +3,7 @@
   "id": "${id}",
   "version": "${version}",
   "name": "${name}",
-  "description": "Disabled the animation effects of kelp, seagrass, and sea lanterns.",
+  "description": "This mod allows you to disable animation effects for any material using commands.",
   "authors": [
     "1024_byteeeee"
   ],
