@@ -5,12 +5,15 @@
   "compatibilityLevel": "/*JAVA_VERSION*/",
   "mixins": [],
   "client": [
+    "ShulkerBoxAnimationDisabled.ShulkerBoxBlockEntityMixin",
+    "changeSettingsValue.MinecraftClientMixin",
+    "chestBlockAnimationDisabled.ChestBlockEntityMixin",
+    "chestBlockAnimationDisabled.EnderChestBlockEntityMixin",
     "chestOptimization.BlockEntityRenderDispatcherMixin",
     "chestOptimization.ChestBlockMixin",
     "chestOptimization.EnderChestBlockMixin",
-    "changeSettingsValue.MinecraftClientMixin"
+    "simpleBlockAnimationDisabled.SpriteAtlasTextureMixin"
   ],
-  "server": [],
   "injectors": {
     "defaultRequire": 1
   }

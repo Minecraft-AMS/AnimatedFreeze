@@ -18,20 +18,25 @@
  * along with AnimatedFreeze. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package top.byteeeee.AnimatedFreeze;
+package top.byteeeee.AnimatedFreeze.mixin.chestBlockAnimationDisabled;
+
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
-import top.byteeeee.AnimatedFreeze.helpers.NeedReloadResources;
+import net.minecraft.block.entity.EnderChestBlockEntity;
+
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+
+import top.byteeeee.AnimatedFreeze.helpers.AnimationDisableList;
 
 @Environment(EnvType.CLIENT)
-public class AnimatedFreezeSetting {
-    public static boolean chestOptimization;
-
-    public static void changeValue() {
-        AnimatedFreezeClient.resourcePackManager.getEnabledProfiles().forEach(
-            chestProfile -> AnimatedFreezeSetting.chestOptimization = NeedReloadResources.isOf(chestProfile.getName())
-        );
+@Mixin(EnderChestBlockEntity.class)
+public abstract class EnderChestBlockEntityMixin {
+    @ModifyReturnValue(method = "getAnimationProgress", at = @At("RETURN"))
+    private float getAnimationProgress(float original) {
+        return AnimationDisableList.list.contains("ender_chest") ? 0.0F : original;
     }
 }

@@ -18,20 +18,11 @@
  * along with AnimatedFreeze. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package top.byteeeee.AnimatedFreeze;
+package top.byteeeee.AnimatedFreeze.utils.compat;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
-import top.byteeeee.AnimatedFreeze.helpers.NeedReloadResources;
-
+@SuppressWarnings("unused")
 @Environment(EnvType.CLIENT)
-public class AnimatedFreezeSetting {
-    public static boolean chestOptimization;
-
-    public static void changeValue() {
-        AnimatedFreezeClient.resourcePackManager.getEnabledProfiles().forEach(
-            chestProfile -> AnimatedFreezeSetting.chestOptimization = NeedReloadResources.isOf(chestProfile.getName())
-        );
-    }
-}
+public class DummyClass {}

@@ -22,14 +22,20 @@ package top.byteeeee.AnimatedFreeze;
 
 import net.fabricmc.api.ClientModInitializer;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.resource.ResourcePackManager;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import top.byteeeee.AnimatedFreeze.commands.RegisterCommands;
+import top.byteeeee.AnimatedFreeze.event.ClientStartEvent;
 import top.byteeeee.AnimatedFreeze.utils.BuiltinResourcesPackAdder;
 
+@Environment(EnvType.CLIENT)
 public class AnimatedFreezeClient implements ClientModInitializer {
     public static final String modName = "AnimatedFreeze";
     public static final Logger LOGGER = LogManager.getLogger(modName);
@@ -39,6 +45,8 @@ public class AnimatedFreezeClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         LOGGER.info(modName + " " + "loaded!");
-        BuiltinResourcesPackAdder.add();
+        RegisterCommands.register();
+        BuiltinResourcesPackAdder.register();
+        ClientStartEvent.register();
     }
 }

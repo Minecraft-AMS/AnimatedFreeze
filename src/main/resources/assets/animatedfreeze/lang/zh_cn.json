@@ -1,0 +1,12 @@
+{
+  "animatedFreeze.command.animatedFreeze.add.success": "%s%s已添加到列表",
+  "animatedFreeze.command.animatedFreeze.add.fail": "%s%s已存在于列表中",
+  "animatedFreeze.command.animatedFreeze.remove.success": "%s%s已从列表中删除",
+  "animatedFreeze.command.animatedFreeze.remove.fail": "%s%s不存在",
+  "animatedFreeze.command.animatedFreeze.removeAll.success": "%s所有方块已从列表中移除",
+  "animatedFreeze.command.animatedFreeze.removeAll.fail": "%s列表为空",
+  "animatedFreeze.command.animatedFreeze.list.head": "[ 动画禁用列表 ]%s%s",
+  "animatedFreeze.command.animatedFreeze.help.doc": "指令文档：",
+  "animatedFreeze.command.animatedFreeze.help.url": "https://github.com/Minecraft-AMS/AnimatedFreeze/blob/master/README.md",
+  "animatedFreeze.command.animatedFreeze.help.extra": "Ps：指令建议的值不是必须的，您可以自由的写入正确的材质名即使它不存在于指令所建议的值中"
+}

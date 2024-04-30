@@ -30,14 +30,11 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class BuiltinResourcesPackAdder {
-    public static void add() {
-        FabricLoader.getInstance().getModContainer("animatedfreeze").ifPresent(BuiltinResourcesPackAdder::register);
+    public static void register() {
+        FabricLoader.getInstance().getModContainer("animatedfreeze").ifPresent(BuiltinResourcesPackAdder::add);
     }
 
-    private static void register(ModContainer modContainer) {
+    private static void add(ModContainer modContainer) {
         ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:chest_optimization"), modContainer, ResourcePackActivationType.NORMAL);
-        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:sea_lantern_freeze"), modContainer, ResourcePackActivationType.NORMAL);
-        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:seagrass_freeze"), modContainer, ResourcePackActivationType.NORMAL);
-        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:kelp_freeze"), modContainer, ResourcePackActivationType.NORMAL);
     }
 }

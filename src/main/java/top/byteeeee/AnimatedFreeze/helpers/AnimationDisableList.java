@@ -18,20 +18,15 @@
  * along with AnimatedFreeze. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package top.byteeeee.AnimatedFreeze;
+package top.byteeeee.AnimatedFreeze.helpers;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
-import top.byteeeee.AnimatedFreeze.helpers.NeedReloadResources;
+import java.util.ArrayList;
+import java.util.List;
 
 @Environment(EnvType.CLIENT)
-public class AnimatedFreezeSetting {
-    public static boolean chestOptimization;
-
-    public static void changeValue() {
-        AnimatedFreezeClient.resourcePackManager.getEnabledProfiles().forEach(
-            chestProfile -> AnimatedFreezeSetting.chestOptimization = NeedReloadResources.isOf(chestProfile.getName())
-        );
-    }
+public class AnimationDisableList {
+    public static final List<String> list = new ArrayList<>();
 }

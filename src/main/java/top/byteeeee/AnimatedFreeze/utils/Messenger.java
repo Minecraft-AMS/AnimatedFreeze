@@ -18,20 +18,27 @@
  * along with AnimatedFreeze. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package top.byteeeee.AnimatedFreeze;
+package top.byteeeee.AnimatedFreeze.utils;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
-import top.byteeeee.AnimatedFreeze.helpers.NeedReloadResources;
+import net.minecraft.text.*;
+
+import top.byteeeee.AnimatedFreeze.utils.compat.LiteralTextUtil;
+import top.byteeeee.AnimatedFreeze.utils.compat.TranslatableTextUtil;
 
 @Environment(EnvType.CLIENT)
-public class AnimatedFreezeSetting {
-    public static boolean chestOptimization;
+public class Messenger {
+    public static BaseText s(Object text) {
+        return LiteralTextUtil.compatText(text.toString());
+    }
 
-    public static void changeValue() {
-        AnimatedFreezeClient.resourcePackManager.getEnabledProfiles().forEach(
-            chestProfile -> AnimatedFreezeSetting.chestOptimization = NeedReloadResources.isOf(chestProfile.getName())
-        );
+    public static BaseText tr(String key, Object... args) {
+        return TranslatableTextUtil.compatText(key, args);
+    }
+
+    public static BaseText endl() {
+        return s("\n");
     }
 }
