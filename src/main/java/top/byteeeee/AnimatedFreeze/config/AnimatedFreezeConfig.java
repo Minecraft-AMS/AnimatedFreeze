@@ -51,6 +51,7 @@ public class AnimatedFreezeConfig {
     }
 
     public static void loadListFromConfig() {
+        createConfigPath();
         try (BufferedReader reader = new BufferedReader(new FileReader(CONFIG_FILE))) {
             String[] array = gson.fromJson(reader, String[].class);
             if (array != null) {
