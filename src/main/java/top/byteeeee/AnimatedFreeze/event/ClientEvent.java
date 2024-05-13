@@ -24,11 +24,13 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 
+import top.byteeeee.AnimatedFreeze.AnimatedFreezeSetting;
 import top.byteeeee.AnimatedFreeze.config.AnimatedFreezeConfig;
 
 @Environment(EnvType.CLIENT)
-public class ClientStartEvent {
+public class ClientEvent {
     public static void register() {
         ClientLifecycleEvents.CLIENT_STARTED.register(client -> AnimatedFreezeConfig.loadListFromConfig());
+        ClientLifecycleEvents.CLIENT_STARTED.register(client -> AnimatedFreezeSetting.changeValue());
     }
 }

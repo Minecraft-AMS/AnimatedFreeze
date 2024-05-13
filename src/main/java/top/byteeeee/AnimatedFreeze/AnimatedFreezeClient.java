@@ -32,7 +32,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import top.byteeeee.AnimatedFreeze.commands.RegisterCommands;
-import top.byteeeee.AnimatedFreeze.event.ClientStartEvent;
+import top.byteeeee.AnimatedFreeze.event.ClientEvent;
 import top.byteeeee.AnimatedFreeze.utils.BuiltinResourcesPackAdder;
 
 @Environment(EnvType.CLIENT)
@@ -47,6 +47,6 @@ public class AnimatedFreezeClient implements ClientModInitializer {
         LOGGER.info(modName + " " + "loaded!");
         RegisterCommands.register();
         BuiltinResourcesPackAdder.register();
-        ClientStartEvent.register();
+        ClientEvent.register();
     }
 }
