@@ -6,7 +6,7 @@
   "mixins": [],
   "client": [
     "ShulkerBoxAnimationDisabled.ShulkerBoxBlockEntityMixin",
-    "changeSettingsValue.MinecraftClientMixin",
+    "changeSettingsValues.MinecraftClientMixin",
     "chestBlockAnimationDisabled.ChestBlockEntityMixin",
     "chestBlockAnimationDisabled.EnderChestBlockEntityMixin",
     "chestOptimization.BlockEntityRenderDispatcherMixin",

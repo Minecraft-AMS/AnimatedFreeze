@@ -18,7 +18,7 @@
  * along with AnimatedFreeze. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package top.byteeeee.AnimatedFreeze.mixin.changeSettingsValue;
+package top.byteeeee.AnimatedFreeze.mixin.changeSettingsValues;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
