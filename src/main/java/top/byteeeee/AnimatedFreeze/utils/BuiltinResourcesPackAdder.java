@@ -26,6 +26,7 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
+
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
@@ -35,6 +36,14 @@ public class BuiltinResourcesPackAdder {
     }
 
     private static void add(ModContainer modContainer) {
-        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier("af_mod:chest_optimization"), modContainer, ResourcePackActivationType.NORMAL);
+        ResourceManagerHelper.registerBuiltinResourcePack(
+            //#if MC>=12100
+            //$$ Identifier.of("af_mod:chest_optimization"),
+            //#else
+            new Identifier("af_mod:chest_optimization"),
+            //#endif
+            modContainer,
+            ResourcePackActivationType.NORMAL
+        );
     }
 }
