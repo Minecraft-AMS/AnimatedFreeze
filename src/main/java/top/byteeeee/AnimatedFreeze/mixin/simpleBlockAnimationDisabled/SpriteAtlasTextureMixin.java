@@ -50,12 +50,12 @@ public abstract class SpriteAtlasTextureMixin {
             target = "Lnet/minecraft/client/texture/Sprite;isAnimated()Z"
         )
     )
-    private boolean noAnimation(Sprite instance, Operation<Boolean> original) {
+    private boolean noAnimation(Sprite sprite, Operation<Boolean> original) {
         for (String block : AnimationDisableList.list) {
-            if (instance.getId().getPath().endsWith(block)) {
+            if (sprite.getId().getPath().endsWith(block)) {
                 return false;
             }
         }
-        return original.call(instance);
+        return original.call(sprite);
     }
 }

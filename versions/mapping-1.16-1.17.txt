@@ -1,0 +1,3 @@
+net.minecraft.client.gui.screen.Screen addButton() net.minecraft.client.gui.screen.Screen addDrawableChild()
+net.minecraft.client.gui.screen.Screen addChild() net.minecraft.client.gui.screen.Screen addSelectableChild()
+net.minecraft.client.MinecraftClient openScreen() net.minecraft.client.MinecraftClient setScreen()

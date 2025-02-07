@@ -21,7 +21,6 @@
 package top.byteeeee.AnimatedFreeze;
 
 import net.fabricmc.api.ClientModInitializer;
-
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
@@ -33,6 +32,7 @@ import org.apache.logging.log4j.Logger;
 
 import top.byteeeee.AnimatedFreeze.commands.RegisterCommands;
 import top.byteeeee.AnimatedFreeze.event.ClientEvent;
+import top.byteeeee.AnimatedFreeze.key.RegisterKeyBinding;
 import top.byteeeee.AnimatedFreeze.utils.BuiltinResourcesPackAdder;
 
 @Environment(EnvType.CLIENT)
@@ -48,5 +48,6 @@ public class AnimatedFreezeClient implements ClientModInitializer {
         RegisterCommands.register();
         BuiltinResourcesPackAdder.register();
         ClientEvent.register();
+        RegisterKeyBinding.Register();
     }
 }

@@ -8,5 +8,10 @@
   "animatedFreeze.command.animatedFreeze.list.head": "[ 动画禁用列表 ]%s%s",
   "animatedFreeze.command.animatedFreeze.help.doc": "指令文档：",
   "animatedFreeze.command.animatedFreeze.help.url": "https://github.com/Minecraft-AMS/AnimatedFreeze/blob/master/README.md",
-  "animatedFreeze.command.animatedFreeze.help.extra": "Ps：指令建议的值不是必须的，您可以自由的写入正确的材质名即使它不存在于指令所建议的值中"
+  "animatedFreeze.command.animatedFreeze.help.extra": "Ps：指令建议的值不是必须的，您可以自由的写入正确的材质名即使它不存在于指令所建议的值中",
+  "animatedFreeze.keyBinding.openGUI": "打开GUI",
+  "animatedFreeze.keyBinding.category": "AnimatedFreeze - 动画冻结",
+  "animatedFreeze.ui.input": "输入",
+  "animatedFreeze.ui.viewList": "查看列表",
+  "animatedFreeze.ui.back": "返回"
 }

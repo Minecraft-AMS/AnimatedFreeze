@@ -40,10 +40,12 @@ import top.byteeeee.AnimatedFreeze.AnimatedFreezeSetting;
 @Environment(EnvType.CLIENT)
 @Mixin(EnderChestBlock.class)
 public abstract class EnderChestBlockMixin {
+    //#if MC<12104
     @ModifyReturnValue(method = "getRenderType", at = @At("RETURN"))
     private BlockRenderType getRenderType(BlockRenderType original) {
         return AnimatedFreezeSetting.chestOptimization ? BlockRenderType.MODEL : original;
     }
+    //#endif
 
     //#if MC>=11800
     //$$ @ModifyReturnValue(method = "getTicker", at = @At("RETURN"))

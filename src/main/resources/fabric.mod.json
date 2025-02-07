@@ -3,7 +3,7 @@
   "id": "${id}",
   "version": "${version}",
   "name": "${name}",
-  "description": "This mod allows you to disable animation effects for any material using commands.",
+  "description": "This mod allows you to disable animation effects for any material using commands or GUI.",
   "authors": [
     "1024_byteeeee"
   ],
@@ -21,6 +21,14 @@
     "client": [
       "top.byteeeee.AnimatedFreeze.AnimatedFreezeClient"
     ]
+  },
+  "custom": {
+    "modmenu": {
+      "config_screen_factory": "top.byteeeee.AnimatedFreeze.screen.ListScreen"
+    }
+  },
+  "suggests": {
+    "modmenu": "*"
   },
   "mixins": [
     "animatedfreeze.mixins.json"

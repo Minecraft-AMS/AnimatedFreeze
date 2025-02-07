@@ -8,5 +8,10 @@
   "animatedFreeze.command.animatedFreeze.list.head": "[ Animation disable list ]%s%s",
   "animatedFreeze.command.animatedFreeze.help.doc": "Command documentation:",
   "animatedFreeze.command.animatedFreeze.help.url": "https://github.com/Minecraft-AMS/AnimatedFreeze/blob/master/README_en.md",
-  "animatedFreeze.command.animatedFreeze.help.extra": "Ps: The suggested values for the command are not mandatory, you are free to enter the correct material name even if it does not exist among the suggested values for the command"
+  "animatedFreeze.command.animatedFreeze.help.extra": "Ps: The suggested values for the command are not mandatory, you are free to enter the correct material name even if it does not exist among the suggested values for the command",
+  "animatedFreeze.keyBinding.openGUI": "Open GUI",
+  "animatedFreeze.keyBinding.category": "AnimatedFreeze",
+  "animatedFreeze.ui.input": "Input",
+  "animatedFreeze.ui.viewList": "View list",
+  "animatedFreeze.ui.back": "Back"
 }

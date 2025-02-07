@@ -23,14 +23,25 @@ package top.byteeeee.AnimatedFreeze.event;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 import top.byteeeee.AnimatedFreeze.AnimatedFreezeSetting;
 import top.byteeeee.AnimatedFreeze.config.AnimatedFreezeConfig;
+import top.byteeeee.AnimatedFreeze.key.RegisterKeyBinding;
+import top.byteeeee.AnimatedFreeze.screen.MainScreen;
 
 @Environment(EnvType.CLIENT)
 public class ClientEvent {
     public static void register() {
         ClientLifecycleEvents.CLIENT_STARTED.register(client -> AnimatedFreezeConfig.loadListFromConfig());
         ClientLifecycleEvents.CLIENT_STARTED.register(client -> AnimatedFreezeSetting.changeValue());
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            while (RegisterKeyBinding.openGUI.wasPressed()) {
+                if (client.currentScreen == null) {
+                    client.openScreen(new MainScreen());
+                }
+            }
+        });
     }
 }
