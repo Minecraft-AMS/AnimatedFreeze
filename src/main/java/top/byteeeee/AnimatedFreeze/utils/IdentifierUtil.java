@@ -22,22 +22,24 @@ package top.byteeeee.AnimatedFreeze.utils;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
-import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
+
+import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
-public class BuiltinResourcesPackAdder {
-    public static void register() {
-        FabricLoader.getInstance().getModContainer("animatedfreeze").ifPresent(BuiltinResourcesPackAdder::add);
-    }
+public class IdentifierUtil {
+	public static Identifier of(String namespace, String path) {
+		//#if MC>=12100
+		//$$ return Identifier.of(namespace, path);
+		//#else
+		return new Identifier(namespace, path);
+		//#endif
+	}
 
-    private static void add(ModContainer modContainer) {
-        ResourceManagerHelper.registerBuiltinResourcePack(
-            IdentifierUtil.ofId("af_mod:chest_optimization"),
-            modContainer,
-            ResourcePackActivationType.NORMAL
-        );
-    }
+	public static Identifier ofId(String id) {
+		//#if MC>=12100
+		//$$ return Identifier.of(id);
+		//#else
+		return new Identifier(id);
+		//#endif
+	}
 }
