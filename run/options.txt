@@ -1,4 +1,4 @@
-version:4325
+version:4435
 ao:true
 biomeBlendRadius:4
 enableVsync:false
@@ -23,6 +23,7 @@ narrator:0
 particles:1
 reducedDebugInfo:false
 renderClouds:"false"
+cloudRange:128
 renderDistance:12
 simulationDistance:12
 screenEffectScale:0.5
@@ -51,7 +52,7 @@ damageTiltStrength:1.0
 highContrast:false
 highContrastBlockOutline:false
 narratorHotkey:true
-resourcePacks:["vanilla","fabric"]
+resourcePacks:["vanilla","fabric","af_mod:chest_optimization"]
 incompatibleResourcePacks:[]
 lastServer:124.227.80.185:25227
 lang:zh_cn
@@ -90,6 +91,8 @@ telemetryOptInExtra:false
 onboardAccessibility:false
 menuBackgroundBlurriness:5
 startedCleanly:true
+showNowPlayingToast:false
+musicFrequency:"DEFAULT"
 key_key.attack:key.mouse.left
 key_key.use:key.mouse.right
 key_key.forward:key.keyboard.w
@@ -115,6 +118,7 @@ key_key.swapOffhand:key.keyboard.f
 key_key.saveToolbarActivator:key.keyboard.unknown
 key_key.loadToolbarActivator:key.keyboard.unknown
 key_key.advancements:key.keyboard.unknown
+key_key.quickActions:key.keyboard.g
 key_key.hotbar.1:key.keyboard.1
 key_key.hotbar.2:key.keyboard.2
 key_key.hotbar.3:key.keyboard.3
@@ -124,7 +128,6 @@ key_key.hotbar.6:key.keyboard.6
 key_key.hotbar.7:key.keyboard.7
 key_key.hotbar.8:key.keyboard.8
 key_key.hotbar.9:key.keyboard.9
-key_animatedFreeze.keyBinding.openGUI:key.keyboard.u
 soundCategory_master:0.026490066
 soundCategory_music:0.0
 soundCategory_record:0.02640845
@@ -135,6 +138,7 @@ soundCategory_neutral:0.1056338
 soundCategory_player:0.7007042
 soundCategory_ambient:0.2535211
 soundCategory_voice:1.0
+soundCategory_ui:1.0
 modelPart_cape:true
 modelPart_jacket:true
 modelPart_left_sleeve:true
