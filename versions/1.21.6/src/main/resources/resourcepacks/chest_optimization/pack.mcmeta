@@ -1,6 +1,7 @@
 {
   "pack": {
     "pack_format": 63,
+    "supported_formats": [6, 1000],
     "description": "§bOptimize chest rendering greatly improves FPS"
   }
 }
