@@ -28,6 +28,9 @@ import net.fabricmc.api.Environment;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
+//#if MC>=12109
+//$$ import net.minecraft.client.render.block.entity.state.BlockEntityRenderState;
+//#endif
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,7 +42,12 @@ import top.byteeeee.AnimatedFreeze.AnimatedFreezeSetting;
 @Mixin(BlockEntityRenderDispatcher.class)
 public abstract class BlockEntityRenderDispatcherMixin {
     @ModifyReturnValue(method = "get", at = @At("RETURN"))
-    private <E extends BlockEntity> BlockEntityRenderer<E> get(BlockEntityRenderer<E> original, E blockEntity) {
+    //#if MC>=12109
+    //$$ private <E extends BlockEntity, S extends BlockEntityRenderState> BlockEntityRenderer<E, S> get(BlockEntityRenderer<E, S> original, E blockEntity)
+    //#else
+    private <E extends BlockEntity> BlockEntityRenderer<E> get(BlockEntityRenderer<E> original, E blockEntity)
+    //#endif
+    {
         return EntityRenderBlock.isOf(blockEntity.getClass()) && AnimatedFreezeSetting.chestOptimization ? null : original;
     }
 }
