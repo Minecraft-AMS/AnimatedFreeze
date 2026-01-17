@@ -39,7 +39,7 @@ import top.byteeeee.annotationtoolbox.annotation.GameVersion;
 @Environment(EnvType.CLIENT)
 @GameVersion(
     version = "Minecraft == 1.16.5",
-    desc = "Version differences: 1.17.1 - 1.18.2, 1.19.4 - 1.21.11"
+    desc = "Version differences: 1.17.1 - 1.18.2, 1.19.4 - 1.21.10"
 )
 @Mixin(SpriteAtlasTexture.class)
 public abstract class SpriteAtlasTextureMixin {

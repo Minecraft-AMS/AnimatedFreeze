@@ -84,15 +84,24 @@ public class AnimatedCommand {
     private static RequiredArgumentBuilder<FabricClientCommandSource, String> suggestions(StringArgumentType type) {
         return
             ClientCommandManager.argument("block", type).suggests(
-                (context, builder) -> CompletableFuture.supplyAsync(
-                    () -> {
-                        for (Identifier id : Registry.BLOCK.getIds()) {
-                            builder.suggest(id.toString().replace("minecraft:", ""));
+                (context, builder) -> {
+                    String remaining = builder.getRemaining().toLowerCase();
+
+                    for (Identifier id : Registry.BLOCK.getIds()) {
+                        String suggestion = id.toString().replace("minecraft:", "");
+                        if (remaining.isEmpty() || suggestion.toLowerCase().startsWith(remaining)) {
+                            builder.suggest(suggestion);
                         }
-                        EXTRA_SUGGESTIONS.forEach(builder::suggest);
-                        return builder.build();
                     }
-                )
+
+                    for (String extra : EXTRA_SUGGESTIONS) {
+                        if (remaining.isEmpty() || extra.toLowerCase().startsWith(remaining)) {
+                            builder.suggest(extra);
+                        }
+                    }
+
+                    return builder.buildFuture();
+                }
             );
     }
 
